@@ -27011,8 +27011,8 @@ var _s = $RefreshSig$();
 const App = ({ onLoadedProductList , onErrorMessage  })=>{
     _s();
     (0, _react.useMemo)(async ()=>{
-        const response = await (0, _axiosDefault.default).get("https://api.jsonbin.io/b/628cdd79449a1f3821ecad9b/2");
         try {
+            const response = await (0, _axiosDefault.default).get("https://api.jsonbin.io/b/628cdd79449a1f3821ecad9b/2");
             console.log("\u041F\u0440\u043E\u0438\u0437\u0432\u0435\u0434\u0435\u043D \u0437\u0430\u043F\u0440\u043E\u0441 \u043D\u0430 \u0441\u0435\u0440\u0432\u0435\u0440");
             onLoadedProductList(response.data);
         } catch (e) {
@@ -34205,7 +34205,6 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "mapStateToProps", ()=>mapStateToProps);
 parcelHelpers.export(exports, "mapDispatchToProps", ()=>mapDispatchToProps);
 function mapStateToProps({ rootReducer  }) {
-    console.log(rootReducer);
     return {
         products: rootReducer
     };
@@ -34306,7 +34305,7 @@ const Products = ({ products , onSortByName , onSortByCost , onSearch , onOrderi
     (0, _react.useEffect)(()=>{
         let page = 1;
         const callback = function(entries) {
-            if (entries[0].isIntersecting && page * 15 < productList.length && productList.length) {
+            if (entries[0].isIntersecting && page * 15 < productList.length) {
                 setLoad(true);
                 setTimeout(()=>{
                     page++;
@@ -34333,12 +34332,12 @@ const Products = ({ products , onSortByName , onSortByCost , onSearch , onOrderi
                     children: "\u0421\u043F\u0438\u0441\u043E\u043A \u0442\u043E\u0432\u0430\u0440\u043E\u0432"
                 }, void 0, false, {
                     fileName: "src/pages/Products/Products.tsx",
-                    lineNumber: 58,
+                    lineNumber: 54,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/pages/Products/Products.tsx",
-                lineNumber: 57,
+                lineNumber: 53,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -34348,11 +34347,13 @@ const Products = ({ products , onSortByName , onSortByCost , onSearch , onOrderi
                         className: "text",
                         children: [
                             "\u041F\u043E\u043A\u0430\u0437\u0430\u043D\u043E \u043F\u043E\u0437\u0438\u0446\u0438\u0439: ",
-                            currentCountry.length
+                            currentCountry.length,
+                            " \u0438\u0437 ",
+                            productList.length
                         ]
                     }, void 0, true, {
                         fileName: "src/pages/Products/Products.tsx",
-                        lineNumber: 62,
+                        lineNumber: 58,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -34360,7 +34361,7 @@ const Products = ({ products , onSortByName , onSortByCost , onSearch , onOrderi
                         children: "\u0421\u043E\u0440\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u043F\u043E \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u044E"
                     }, void 0, false, {
                         fileName: "src/pages/Products/Products.tsx",
-                        lineNumber: 63,
+                        lineNumber: 61,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -34368,7 +34369,7 @@ const Products = ({ products , onSortByName , onSortByCost , onSearch , onOrderi
                         children: "\u0421\u043E\u0440\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u043F\u043E \u0446\u0435\u043D\u0435"
                     }, void 0, false, {
                         fileName: "src/pages/Products/Products.tsx",
-                        lineNumber: 64,
+                        lineNumber: 62,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -34378,16 +34379,23 @@ const Products = ({ products , onSortByName , onSortByCost , onSearch , onOrderi
                         placeholder: "\u041F\u043E\u0438\u0441\u043A \u043F\u043E \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u044E..."
                     }, void 0, false, {
                         fileName: "src/pages/Products/Products.tsx",
-                        lineNumber: 65,
+                        lineNumber: 63,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/pages/Products/Products.tsx",
-                lineNumber: 61,
+                lineNumber: 57,
                 columnNumber: 7
             }, undefined),
-            productList.length ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+            products.errorMessage ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
+                className: "message",
+                children: products.errorMessage
+            }, void 0, false, {
+                fileName: "src/pages/Products/Products.tsx",
+                lineNumber: 73,
+                columnNumber: 9
+            }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _productItemDefault.default), {
                         items: currentCountry
@@ -34402,25 +34410,18 @@ const Products = ({ products , onSortByName , onSortByCost , onSearch , onOrderi
                         columnNumber: 20
                     }, undefined)
                 ]
-            }, void 0, true) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
-                className: "message",
-                children: products.errorMessage
-            }, void 0, false, {
-                fileName: "src/pages/Products/Products.tsx",
-                lineNumber: 80,
-                columnNumber: 9
-            }, undefined),
+            }, void 0, true),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 ref: lastElement
             }, void 0, false, {
                 fileName: "src/pages/Products/Products.tsx",
-                lineNumber: 82,
+                lineNumber: 80,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/pages/Products/Products.tsx",
-        lineNumber: 56,
+        lineNumber: 52,
         columnNumber: 5
     }, undefined);
 };
@@ -51951,6 +51952,7 @@ const reducer = (state = initalState, action)=>{
         case 0, _types.SEARCH:
             if (state.productList.length) {
                 state.productListFilter = state.productList.filter((item)=>item.name.toLowerCase().includes(action.value.toLowerCase()));
+                state.errorMessage = "";
                 if (state.productListFilter.length === 0) state.errorMessage = "\u041D\u0438\u0447\u0435\u0433\u043E \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u043E";
             }
             return {
